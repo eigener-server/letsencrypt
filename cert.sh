@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # Hedgehog Cloud by www.eigener-server.ch https://www.eigener-server.ch/en/igel-cloud \
 # is licensed under a Creative Commons Attribution 4.0 International Lizenz \
