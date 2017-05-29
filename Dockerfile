@@ -32,5 +32,4 @@ WORKDIR /usr/local/bin
 
 ENTRYPOINT ["/bin/bash","/usr/local/bin/run.sh"]
 
-CMD ["nginx", "-g", "daemon off;"]
-
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
