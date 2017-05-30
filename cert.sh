@@ -52,6 +52,8 @@ do
 done
 
 mkdir -p $cert_dir_pem
+echo "$command_exec $command_staging $command_parameter"
 $command_exec $command_staging $command_parameter
+echo "$command_pem"
 $command_pem
 
