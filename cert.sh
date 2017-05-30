@@ -34,7 +34,7 @@ fi
 
 master_domain=$1
 cert_dir_pem="/host/letsencrypt/certs/pem"
-command_exec="certbot certonly --apache --agree-tos -n"
+command_exec="certbot certonly --webroot --agree-tos -n -w /var/www/html/"
 command_pem="cat /etc/letsencrypt/live/$master_domain/fullchain.pem /etc/letsencrypt/live/$master_domain/privkey.pem > $cert_dir_pem/$master_domain.pem"
 command_parameter="-m $mail"
 
