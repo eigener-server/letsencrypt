@@ -4,6 +4,12 @@ https://github.com/eigener-server/docker-compose
 
 [Howto](https://www.eigener-server.ch/en/igel-cloud)
 
+'''
+docker exec eigenerserverch_letsencrypt_1 cert.sh staging YOUR-EMAIL YOUR-DOMAIN www.YOUR-DOMAIN
+docker exec eigenerserverch_letsencrypt_1 cert.sh YOUR-EMAIL YOUR-DOMAIN www.YOUR-DOMAIN
+docker restart eigenerserverch_haproxy_1
+'''
+
 ### License of the Hedgehog Cloud
 
 You may duplicate and redistribute the material in any format or medium as well as refix, alter, and build
