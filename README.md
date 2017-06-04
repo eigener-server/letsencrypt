@@ -6,7 +6,7 @@ https://github.com/eigener-server/docker-compose
 
 '''
 docker exec eigenerserverch_letsencrypt_1 cert.sh staging YOUR-EMAIL YOUR-DOMAIN www.YOUR-DOMAIN
-docker exec eigenerserverch_letsencrypt_1 cert.sh YOUR-EMAIL YOUR-DOMAIN www.YOUR-DOMAIN
+docker exec eigenerserverch_letsencrypt_1 cert.sh force-renewal YOUR-EMAIL YOUR-DOMAIN www.YOUR-DOMAIN
 docker restart eigenerserverch_haproxy_1
 '''
 

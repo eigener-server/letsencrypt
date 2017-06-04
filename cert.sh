@@ -7,10 +7,17 @@
 
 regex_domain="^([a-zA-Z0-9_-]([a-zA-Z0-9_-]*[a-zA-Z0-9_-])?\.)+[a-zA-Z0-9_-]([a-zA-Z0-9_-]*[a-zA-Z0-9])?\$"
 regex_mail="^[a-z0-9!#%&*+=_{|}~-]+(\.[a-z0-9!#%&*+=_{|}~-]+)*@([a-z0-9]([a-z0-9-]*[a-z0-9])?\.)+[a-z0-9]([a-z0-9-]*[a-z0-9])?\$"
+command_argument=""
 
 if [ "$1" = 'staging' ]; then
     shift # "staging"
-    command_staging="--staging"
+    command_argument="--staging"
+
+fi
+
+if [ "$1" = 'force-renewal' ]; then
+    shift # "staging"
+    command_argument="--force-renewal"
 
 fi
 
@@ -22,6 +29,7 @@ else
     echo "Mail not OK $mail"
     echo "Please use following parameters: YOUR_EMAIL YOUR_DOMAIN_1 YOUR_DOMAIN_2 ..."
     echo "and the following for test: staging YOUR_EMAIL YOUR_DOMAIN_1 YOUR_DOMAIN_2 ..."
+    echo "and to force renewal: force-renewal YOUR_EMAIL YOUR_DOMAIN_1 YOUR_DOMAIN_2 ..."
     exit 1
 fi
 
@@ -29,6 +37,7 @@ if [ "$#" -lt 1 ]; then
     echo "Domain missing"
     echo "Please use following parameters: YOUR_EMAIL YOUR_DOMAIN_1 YOUR_DOMAIN_2 ..."
     echo "and the following for test: staging YOUR_EMAIL YOUR_DOMAIN_1 YOUR_DOMAIN_2 ..."
+    echo "and to force renewal: force-renewal YOUR_EMAIL YOUR_DOMAIN_1 YOUR_DOMAIN_2 ..."
     exit 1
 fi
 
@@ -47,13 +56,14 @@ do
         echo "Domain not OK $domain"
         echo "Please use following parameters: YOUR_EMAIL YOUR_DOMAIN_1 YOUR_DOMAIN_2 ..."
         echo "and the following for test: staging YOUR_EMAIL YOUR_DOMAIN_1 YOUR_DOMAIN_2 ..."
+        echo "and to force renewal: force-renewal YOUR_EMAIL YOUR_DOMAIN_1 YOUR_DOMAIN_2 ..."
         exit 1
     fi
 done
 
 mkdir -p $cert_dir_pem
-echo "$command_exec $command_staging $command_parameter"
-$command_exec $command_staging $command_parameter
+echo "$command_exec $command_argument $command_parameter"
+$command_exec $command_argument $command_parameter
 echo "$command_pem"
 bash -c "$command_pem"
 
